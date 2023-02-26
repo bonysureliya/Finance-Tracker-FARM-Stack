@@ -15,6 +15,9 @@ function App() {
     .then(data => setCount(data.message))
   },[])
 
+  console.log(data);
+  
+
   return (
     <div className="App">
       <div>
