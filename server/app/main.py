@@ -49,13 +49,7 @@ def auth(data : Login):
     #   1.Read the data of post 
     #   2.create the if condition to check
     
-    DB_USERNAME : Final = "bony.sureliya"
-    DB_PASSWORD : Final = "somepass"
-    
-    if data.username == DB_USERNAME and data.password == DB_PASSWORD:
-        return { "message" : "Hooray!!!" }
-    else :
-        return { "message" : f'Oops!!' }
+    return {"message" : {data.username , data.password}}
 
 @app.post("/register")
 def new_user_register(data : Login):
