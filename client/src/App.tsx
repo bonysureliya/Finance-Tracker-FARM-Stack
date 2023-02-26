@@ -1,12 +1,19 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [data, setData] = useState()
 
   console.log(fetch("http://127.0.0.1:8000/"))
   
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/")
+    .then(response => response.json())
+        // 4. Setting *dogImage* to the image url that we received from the response above
+    .then(data => setCount(data.message))
+  },[])
 
   return (
     <div className="App">
@@ -21,7 +28,7 @@ function App() {
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+          count is {data}
         </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
