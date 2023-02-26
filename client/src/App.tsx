@@ -12,7 +12,7 @@ function App() {
     fetch("http://127.0.0.1:8000/")
     .then(response => response.json())
         // 4. Setting *dogImage* to the image url that we received from the response above
-    .then(data => setCount(data.message))
+    .then(data => setData(data))
   },[])
 
   console.log(data);
