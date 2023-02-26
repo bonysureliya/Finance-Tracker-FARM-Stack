@@ -41,7 +41,7 @@ def shutdown_db_client():
 
 @app.get("/")
 def root():
-    return { "message" : "FastAPI is Awesome" }
+    return { "message" : "New Message for test" }
 
 @app.post("/loginAuth")
 def auth(data : Login):
