@@ -5,7 +5,7 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
-  console.log(fetch("https://8000-bonysureliy-financetrac-ss9si5h6th6.ws-us88.gitpod.io/"))
+  console.log(fetch("http://127.0.0.1:8000/"))
   
 
   return (
