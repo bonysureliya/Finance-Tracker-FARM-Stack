@@ -11,17 +11,7 @@ load_dotenv()
 app = FastAPI()
 
 
-origins = [
-    "http://localhost.tiangolo.com",
-    "https://localhost.tiangolo.com",
-    "http://localhost",
-    "http://localhost:8080",
-    "https://8000-bonysureliy-financetrac-ss9si5h6th6.ws-us88.gitpod.io/",
-    "https://5173-bonysureliy-financetrac-ss9si5h6th6.ws-us88.gitpod.io/",
-    "https://bonysureliy-financetrac-ss9si5h6th6.ws-us88.gitpod.io/",
-    "http://localhost:5173/"
-    
-]
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
