@@ -62,3 +62,7 @@ def new_user_register(data : Login):
     mydict = { "username": data.username, "password": data.password }
     my_client.hello.first.insert_one(mydict)
     return {"message" :  "User Registered"}
+
+app.post("/loginTest")
+def login(data : Login):
+    return {"message" : {data.username , data.password}}

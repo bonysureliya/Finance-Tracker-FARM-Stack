@@ -3,11 +3,12 @@ import React from "react";
 
 const LoginButton = ( props:{
                             title:string ,
-                            variant:any
+                            variant:any ,
+                            onSubmitFunc? : Function
                         } ) => {
   return (
     <div className="flex justify-center">
-        <Button size="small" className="w-full" variant={props.variant}>
+        <Button size="small" onClick={() => props.onSubmitFunc} className="w-full" variant={props.variant}>
           {props.title}
         </Button>
       </div>
