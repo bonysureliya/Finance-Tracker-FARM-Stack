@@ -63,6 +63,6 @@ def new_user_register(data : Login):
     my_client.hello.first.insert_one(mydict)
     return {"message" :  "User Registered"}
 
-app.post("/loginTest")
+@app.post("/loginTest")
 def login(data : Login):
     return {"message" : {data.username , data.password}}
