@@ -21,12 +21,12 @@ const LoginCard = () => {
    
   }
 
-  function sendDataToBackend ( username : string , password : string ) {
-    axios.post("http://127.0.0.1:8000/loginAuth", { username , password })
-    .then(res => {
-      console.log(res);
-      console.log(res.data);
-    })
+  function sendDataToBackend ( ) {
+    axios.post("http://127.0.0.1:8000/loginAuth", {"username" : username , "password" : password} ).then((response) => {
+      console.log(response.data.message[0]);
+    });
+    console.log(username);
+    
   }
 
   
