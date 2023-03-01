@@ -25,6 +25,7 @@ app.add_middleware(
 class Login(BaseModel):
     username : str
     password : str
+
 my_client = MongoClient(os.getenv("MONGO_URI"))
 
 # On Startup and close connect and discnnect the mongodb client
@@ -48,7 +49,10 @@ def auth(data : Login):
     # * Todo
     #   1.Read the data of post 
     #   2.create the if condition to check
-    
+    my_client_username = my_client.hello.first.find_one({'name':data.username},{name:100})
+    print(my_client_username)
+    return {"message": {data.username, data.password}}
+    print(data)    
     return {"message" : {data.username , data.password}}
 
 @app.post("/register")
