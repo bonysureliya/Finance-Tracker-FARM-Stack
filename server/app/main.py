@@ -66,7 +66,7 @@ def auth(data: Login):
     try:
         my_client_username = my_client.finance_tracker.users.find_one(
             {'username': 'bony'})
-        print(my_client_username)
+        print(type(my_client_username))
     except:
         print("No user found")
     # print(my_client_username)
