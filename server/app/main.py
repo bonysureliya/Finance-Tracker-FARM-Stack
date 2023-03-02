@@ -25,8 +25,9 @@ app.add_middleware(
 
 
 class Login(BaseModel):
-    username : str
-    password : str
+    username: str
+    password: str
+
 
 my_client = MongoClient(os.getenv("MONGO_URI"))
 
@@ -55,16 +56,24 @@ def auth(data: Login):
     # * Todo
     #   1.Read the data of post
     #   2.create the if condition to check
-    
-    my_client_username = my_client.finance_tracker.users.find_one({'username':data.username},{'_id':1,'username':1,'password':1})
+
+    my_client_username = my_client.finance_tracker.users.find_one(
+        {'username': data.username}, {'_id': 1, 'username': 1, 'password': 1})
     print(my_client_username['username'])
-    if my_client_username['username'] == data.username:
-        if my_client_username['password'] == data.password:
-            return { "message" : "Correct password" }
-        else:
-            return { "message" : "Oops!!" }
-    else:
-        return { "message" : "Wrong username" }
+    try:
+       my_client_username = my_client.finance_tracker.users.find_one(
+        {'username': data.username}, {'_id': 1, 'username': 1, 'password': 1})
+       if my_client_username['username'] == data.username:
+            if my_client_username['password'] == data.password:
+                return { "message" : "Correct password" }
+            else:
+                return { "message" : "Oops!!" }
+       else:
+           return { "message" : "Oops!!" }
+    except:
+        print("An exception occurred")
+    
+    
 
        
 
