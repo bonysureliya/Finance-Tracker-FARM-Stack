@@ -56,16 +56,17 @@ def auth(data: Login):
     #   1.Read the data of post
     #   2.create the if condition to check
     
-    my_client_username = my_client.finance_tracker.users.find_one({'name':data.username})
-    if my_client_username['name'] == data.username:
+    my_client_username = my_client.finance_tracker.users.find_one({'username':data.username},{'_id':1,'username':1,'password':1})
+    print(my_client_username['username'])
+    if my_client_username['username'] == data.username:
         if my_client_username['password'] == data.password:
-            return { "message" : "Hooray" }
+            return { "message" : "Correct password" }
         else:
-            return { "message" : "Oops wrong password" }
+            return { "message" : "Oops!!" }
     else:
-        return { "message" : "User not registered" }
-    print(my_client_username)
-    # return {"message": {my_client_username, data.password}}
+        return { "message" : "Wrong username" }
+
+       
 
 @app.post("/register")
 def new_user_register(data: Login):
