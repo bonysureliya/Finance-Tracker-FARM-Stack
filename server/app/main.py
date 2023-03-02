@@ -57,9 +57,9 @@ def auth(data: Login):
     #   1.Read the data of post
     #   2.create the if condition to check
 
-    my_client_username = my_client.finance_tracker.users.find_one(
-        {'username': data.username}, {'_id': 1, 'username': 1, 'password': 1})
-    print(my_client_username['username'])
+    # my_client_username = my_client.finance_tracker.users.find_one(
+    #     {'username': data.username}, {'_id': 1, 'username': 1, 'password': 1})
+    # print(my_client_username['username'])
 
     #    my_client_username = my_client.finance_tracker.users.find_one(
     #     {'username': data.username}, {'_id': 1, 'username': 1, 'password': 1})
