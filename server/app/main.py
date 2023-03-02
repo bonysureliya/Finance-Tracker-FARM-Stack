@@ -63,8 +63,12 @@ def auth(data: Login):
     
     #    my_client_username = my_client.finance_tracker.users.find_one(
     #     {'username': data.username}, {'_id': 1, 'username': 1, 'password': 1})
-    my_client_username = my_client.finance_tracker.users.find({})
-    print(my_client_username)
+    try:
+        my_client_username = my_client.finance_tracker.users.find_one({'username':'bony'})
+        print(my_client_username)
+    except:
+        print("No user found")
+    # print(my_client_username)
 
 @app.post("/register")
 def new_user_register(data: Login):
