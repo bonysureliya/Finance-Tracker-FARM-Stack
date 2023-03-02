@@ -25,9 +25,8 @@ app.add_middleware(
 
 
 class Login(BaseModel):
-    username: str
-    password: str
-
+    username : str
+    password : str
 
 my_client = MongoClient(os.getenv("MONGO_URI"))
 
@@ -69,5 +68,5 @@ def new_user_register(data: Login):
 
 
 @app.post("/loginTest")
-def login(data: Login):
-    return {"message": {data.username, data.password}}
+def login(data : Login):
+    return {"message" : {data.username , data.password}}
