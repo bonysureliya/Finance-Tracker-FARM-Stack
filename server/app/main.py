@@ -57,14 +57,14 @@ def auth(data: Login):
     #   1.Read the data of post
     #   2.create the if condition to check
     
-    my_client_username = my_client.hello.first.find_one({})
+    my_client_username = my_client.finance_tracker.users.find_one({})
     print(my_client_username)
     return {"message": {my_client_username, data.password}}
 
 @app.post("/register")
 def new_user_register(data: Login):
-    mydict = {"username": data.username, "password": data.password}
-    my_client.hello.first.insert_one(mydict)
+    mydict = {"username": "bony.sureliya", "password": "159860e2cf79de282776e0da752ca4e0"}
+    my_client.finance_tracker.users.insert_one(mydict)
     return {"message":  "User Registered"}
 
 
