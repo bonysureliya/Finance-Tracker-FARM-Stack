@@ -65,13 +65,15 @@ def auth(data: Login):
     #     {'username': data.username}, {'_id': 1, 'username': 1, 'password': 1})
     try:
         my_client_username  = my_client.finance_tracker.users.find_one(
-            {'username': 'bony'})
+            {'username': data.username})
         print(type(my_client_username))
         if type(my_client_username) == None:
-            print("OKK NONE")
+            return { "message" : "user dosent exist" }
         else:
-            print("EHHEHEHEHEH")
-
+            if my_client_username['password'] != data.password:
+                return { "message" : "wrong password" }
+            else:
+                return { "message" : "do Login" }   
     except:
         print("No user found")
     # print(my_client_username)
