@@ -67,10 +67,10 @@ def auth(data: Login):
         my_client_username = my_client.finance_tracker.users.find_one(
             {'username': 'asdasdasd'})
         print(my_client_username)
-        if my_client_username == "None":
-            return {"message" : "No users"}
-        else:
-            return {"message" : "HOORAY"}
+        # if my_client_username == "None":
+        #     return {"message" : "No users"}
+        # else:
+        #     return {"message" : "HOORAY"}
     except:
         print("No user found")
     # print(my_client_username)
