@@ -48,13 +48,14 @@ def root():
 def auth(data : Login):
     # * Todo
     #   1.Read the data of post 
-    #   2.create the if condition to check
-    my_client_username = my_client.hello.first.find_one({'name':data.username},{name:100})
-    print(my_client_username)
-    return {"message": {data.username, data.password}}
-    print(data)    
-    return {"message" : {data.username , data.password}}
-
+    #   2.create the if condition to ch   
+    my_client_username = my_client.hello.first.find_one({'name':'Bony Sureliya'},{'_id':0,'name':100})
+    #if data.username == my_client_username.name:
+     #   return { "message" : "Login" }
+    #else:
+        #return { "message" : "Oops" }
+    print(my_client_username['name'])
+    return {"message" : data }
 @app.post("/register")
 def new_user_register(data : Login):
     mydict = { "username": data.username, "password": data.password }
