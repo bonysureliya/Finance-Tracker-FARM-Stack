@@ -60,22 +60,11 @@ def auth(data: Login):
     my_client_username = my_client.finance_tracker.users.find_one(
         {'username': data.username}, {'_id': 1, 'username': 1, 'password': 1})
     print(my_client_username['username'])
-    try:
-       my_client_username = my_client.finance_tracker.users.find_one(
-        {'username': data.username}, {'_id': 1, 'username': 1, 'password': 1})
-       if my_client_username['username'] == data.username:
-            if my_client_username['password'] == data.password:
-                return { "message" : "Correct password" }
-            else:
-                return { "message" : "Oops!!" }
-       else:
-           return { "message" : "Oops!!" }
-    except:
-        print("An exception occurred")
     
-    
-
-       
+    #    my_client_username = my_client.finance_tracker.users.find_one(
+    #     {'username': data.username}, {'_id': 1, 'username': 1, 'password': 1})
+    my_client_username = my_client.finance_tracker.users.find_one({"username":'bony'},{"$exists":True})
+    print(my_client_username)
 
 @app.post("/register")
 def new_user_register(data: Login):
