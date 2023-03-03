@@ -70,7 +70,7 @@ def auth(data: Login):
         if type(my_client_username) == None:
             return { "message" : "user dosent exist" }
         else:
-            if my_client_username['password'] == data.password:
+            if my_client_username['password'] != data.password:
                 return { "message" : "wrong password" }
             else:
                 return { "message" : "do Login" }   

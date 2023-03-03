@@ -6,6 +6,8 @@ import ButtonWithIcon from "./ButtonWithIcon";
 import InputsLogin from "./InputsLogin";
 import LoginButton from "./LoginButton";
 import LoginHeader from "./LoginHeader";
+import md5 from 'md5';
+
 
 const LoginCard = () => {
 
@@ -22,7 +24,7 @@ const LoginCard = () => {
   }
 
   function sendDataToBackend ( ) {
-    axios.post("http://127.0.0.1:8000/loginAuth", {"username" : username , "password" : password} ).then((response) => {
+    axios.post("http://127.0.0.1:8000/loginAuth", {"username" : username , "password" : md5(password)} ).then((response) => {
       console.log(response.data.message[0]);
     });
     console.log(username);
