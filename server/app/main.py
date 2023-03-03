@@ -53,6 +53,7 @@ def root():
 
 @app.post("/loginAuth")
 def auth(data: Login):
+    print(data)
     # * Todo
     #   1.Read the data of post
     #   2.create the if condition to check
