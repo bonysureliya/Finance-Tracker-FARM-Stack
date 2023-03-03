@@ -14,13 +14,10 @@ const LoginCard = () => {
   function handleUsername (e : any): void {
     setUsername(e)
     console.log(username);
-    
-    
   }
   function handlePassword (e : any) {
    setPassword(e)
    console.log(password);
-   
   }
 
   function sendDataToBackend ( ) {
@@ -28,7 +25,6 @@ const LoginCard = () => {
       console.log(response.data.message[0]);
     });
     console.log(username);
-    
   }
 
   

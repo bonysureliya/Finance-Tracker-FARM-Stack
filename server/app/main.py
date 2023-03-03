@@ -33,53 +33,31 @@ my_client = MongoClient(os.getenv("MONGO_URI"))
 
 # On Startup and close connect and discnnect the mongodb client
 
-
 @app.on_event("startup")
 def startup_db_client():
     my_client = MongoClient(os.getenv("MONGO_URI"))
     my_db = my_client['hello']
     print("Connected to the MongoDB database!")
 
-
 @app.on_event("shutdown")
 def shutdown_db_client():
     MongoClient(os.getenv("MONGO_URI"))
 
-
-@app.get("/")
-def root():
-    return {"message": "New Message for test"}
-
-
 @app.post("/loginAuth")
 def auth(data: Login):
-    print(data)
-    # * Todo
-    #   1.Read the data of post
-    #   2.create the if condition to check
-
-    # my_client_username = my_client.finance_tracker.users.find_one(
-    #     {'username': data.username}, {'_id': 1, 'username': 1, 'password': 1})
-    # print(my_client_username['username'])
-
-    #    my_client_username = my_client.finance_tracker.users.find_one(
-    #     {'username': data.username}, {'_id': 1, 'username': 1, 'password': 1})
     try:
         my_client_username  = my_client.finance_tracker.users.find_one(
             {'username': data.username})
-        if type(my_client_username) == None:
-            return { "message" : "user dosent exist" }
+        if my_client_username['password'] != data.password:
+            return { "message" : "wrong password" }
         else:
-            if my_client_username['password'] != data.password:
-                return { "message" : "wrong password" }
-            else:
-                return { "message" : "do Login" }   
+            return { "message" : "do Login" }   
     except:
-        print("No user found")
-    # print(my_client_username)
+        return { "message" : "No users found" }
 
 
 @app.post("/register")
-def new_user_register(data: Login):
-    my_client.finance_tracker.users.insert_one(mydict)
-    return {"message":  "User Registered"}
+def register_new_user(data : Login):
+    print(data)
+    # my_client.finance_tracker.users.insert_one(data)
+    return { "message" : f'username {data.username} password {data.password}' }

@@ -5,11 +5,16 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginCard from "./components/Login/LoginCard";
 import LoginPage from "./pages/LoginPage";
+import Register from "./pages/Register";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <LoginPage />,
+  },
+  {
+    path: '/register',
+    element: <Register />
   },
 ]);
 
