@@ -35,14 +35,27 @@ const Register: FC = () => {
         <p className="text-blue-300 text-2xl">Register</p>
         <div className="w-[250px]">
           <label>Username</label>
-          <TextField onChange={handleUsername} size="small" className="w-[250px]" />
+          <TextField
+            onChange={(e) => handleUsername(e.target.value)}
+            size="small"
+            className="w-[250px]"
+          />
         </div>
         <div className="w-[250px]">
           <label>Password</label>
-          <TextField onChange={handlePassword} size="small" className="w-[250px]" />
+          <TextField
+            onChange={(e) => handlePassword(e.target.value)}
+            size="small"
+            className="w-[250px]"
+          />
         </div>
         <div className="w-[250px]">
-          <Button variant="contained" onClick={sendDataToBackend} size="small" className="w-full">
+          <Button
+            variant="contained"
+            onClick={sendDataToBackend}
+            size="small"
+            className="w-full"
+          >
             This Works
           </Button>
         </div>

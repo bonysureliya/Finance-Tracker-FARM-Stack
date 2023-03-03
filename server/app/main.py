@@ -59,5 +59,5 @@ def auth(data: Login):
 @app.post("/register")
 def register_new_user(data : Login):
     print(data)
-    # my_client.finance_tracker.users.insert_one(data)
+    my_client.finance_tracker.users.insert_one(data)
     return { "message" : f'username {data.username} password {data.password}' }
